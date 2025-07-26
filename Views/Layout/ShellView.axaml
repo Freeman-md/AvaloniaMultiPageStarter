@@ -17,9 +17,25 @@
 
         <!-- Navigation -->
         <StackPanel DockPanel.Dock="Left" Background="#f2f2f2" Width="180" Margin="10" Spacing="8">
-            <Button Content="Home" Command="{Binding ShowHomeCommand}" Foreground="Black" />
-            <Button Content="Settings" Command="{Binding ShowSettingsCommand}" Foreground="Black" />
-            <Button Content="About" Command="{Binding ShowAboutCommand}" Foreground="Black" />
+            <Button
+                Content="Home"
+                Command="{Binding ShowHomeCommand}"
+                Classes.active="{Binding IsHomeActive}"
+                />
+            
+            <Button
+                Content="Settings"
+                Command="{Binding ShowSettingsCommand}"
+                Classes.active="{Binding IsSettingsActive}"
+            />
+            
+            <Button
+                Content="About"
+                Command="{Binding ShowAboutCommand}"
+                Classes.active="{Binding IsAboutActive}"
+            />
+
+
         </StackPanel>
 
         <!-- Main Page Content -->
