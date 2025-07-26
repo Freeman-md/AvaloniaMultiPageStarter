@@ -4,8 +4,9 @@ using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
-using AvaloniaMultiPageStarter.ViewModels;
-using AvaloniaMultiPageStarter.Views;
+using AvaloniaMultiPageStarter.ViewModels.Layout;
+using AvaloniaMultiPageStarter.Views.Layout;
+using AvaloniaMultiPageStarter.ViewModels.Layout;
 
 namespace AvaloniaMultiPageStarter;
 
@@ -23,9 +24,9 @@ public partial class App : Application
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
             // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new MainWindow
+            desktop.MainWindow = new ShellView
             {
-                DataContext = new MainWindowViewModel(),
+                DataContext = new ShellViewModel(),
             };
         }
 

@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AvaloniaMultiPageStarter.ViewModels.Layout"
+        mc:Ignorable="d"
+        x:Class="AvaloniaMultiPageStarter.Views.Layout.ShellView"
+        x:DataType="vm:ShellViewModel"
+        Width="900" Height="600"
+        Title="Avalonia Multi-Page UI">
+
+    <DockPanel>
+        <!-- Header -->
+        <Border DockPanel.Dock="Top" Background="#333" Padding="12">
+            <TextBlock Text="🧩 Avalonia Multi-Page UI" Foreground="White" FontSize="18"/>
+        </Border>
+
+        <!-- Navigation -->
+        <StackPanel DockPanel.Dock="Left" Background="#f2f2f2" Width="180" Margin="10" Spacing="8">
+            <Button Content="Home" Command="{Binding ShowHomeCommand}" Foreground="Black" />
+            <Button Content="Settings" Command="{Binding ShowSettingsCommand}" Foreground="Black" />
+            <Button Content="About" Command="{Binding ShowAboutCommand}" Foreground="Black" />
+        </StackPanel>
+
+        <!-- Main Page Content -->
+        <ContentControl Content="{Binding CurrentViewModel}" Margin="12"/>
+    </DockPanel>
+</Window>
