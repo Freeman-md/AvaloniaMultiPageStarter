@@ -2,9 +2,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:AvaloniaMultiPageStarter.ViewModels.Pages"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaMultiPageStarter.Views.Pages.HomeView">
+             x:Class="AvaloniaMultiPageStarter.Views.Pages.HomeView"
+             x:DataType="vm:HomeViewModel">
     <Grid>
-        <TextBlock Text="🏠 Home Page" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="12">
+            <TextBlock Text="🏠 Home" FontSize="24"/>
+            <TextBlock Text="Current User:" FontWeight="Bold"/>
+            <TextBlock Text="{Binding Username}" FontSize="18"/>
+        </StackPanel>
     </Grid>
 </UserControl>

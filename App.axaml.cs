@@ -1,17 +1,24 @@
+using System;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Data.Core;
 using Avalonia.Data.Core.Plugins;
 using System.Linq;
 using Avalonia.Markup.Xaml;
+using AvaloniaMultiPageStarter.Interfaces;
+using AvaloniaMultiPageStarter.Services;
 using AvaloniaMultiPageStarter.ViewModels.Layout;
 using AvaloniaMultiPageStarter.Views.Layout;
 using AvaloniaMultiPageStarter.ViewModels.Layout;
+using AvaloniaMultiPageStarter.ViewModels.Pages;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AvaloniaMultiPageStarter;
 
 public partial class App : Application
 {
+    public readonly ServiceProvider _services = Bootstrapper.Init();
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -19,14 +26,16 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
-            // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
+            var shellViewModel = _services.GetRequiredService<ShellViewModel>();
+            
             DisableAvaloniaDataAnnotationValidation();
+            
             desktop.MainWindow = new ShellView
             {
-                DataContext = new ShellViewModel(),
+                DataContext = shellViewModel,
             };
         }
 

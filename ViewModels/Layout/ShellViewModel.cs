@@ -1,6 +1,9 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System;
+using AvaloniaMultiPageStarter.Interfaces;
+using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using AvaloniaMultiPageStarter.ViewModels.Pages;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AvaloniaMultiPageStarter.ViewModels.Layout;
 
@@ -14,6 +17,9 @@ public enum PageType
 
 public partial class ShellViewModel : ObservableObject
 {
+    private readonly IServiceProvider _services;
+    private readonly IAppConfigService _config;
+    
     [ObservableProperty]
     private ViewModelBase? currentViewModel;
 
@@ -28,26 +34,31 @@ public partial class ShellViewModel : ObservableObject
     public bool IsAboutActive => CurrentPage ==  PageType.About;
 
 
-    public ShellViewModel()
+    public ShellViewModel(
+        IServiceProvider services,
+        IAppConfigService config
+        )
     {
+        _services = services;
+        _config = config;
         ShowHome();
     }
 
     [RelayCommand]
     private void ShowHome() {
-        CurrentViewModel = new HomeViewModel();
+        CurrentViewModel = _services.GetRequiredService<HomeViewModel>();
         CurrentPage = PageType.Home;
     }
 
     [RelayCommand]
     private void ShowSettings() {
-        CurrentViewModel = new SettingsViewModel();
+        CurrentViewModel = _services.GetRequiredService<SettingsViewModel>();;
         CurrentPage = PageType.Settings;
     }
 
     [RelayCommand]
     private void ShowAbout() {
-        CurrentViewModel = new AboutViewModel();
+        CurrentViewModel = _services.GetRequiredService<AboutViewModel>();;
         CurrentPage = PageType.About;
     }
 }
