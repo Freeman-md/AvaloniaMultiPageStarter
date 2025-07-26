@@ -1,10 +1,18 @@
 <UserControl xmlns="https://github.com/avaloniaui"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-             x:Class="AvaloniaMultiPageStarter.Views.Pages.SettingsView">
+             x:Class="AvaloniaMultiPageStarter.Views.Pages.SettingsView"
+             xmlns:vm="clr-namespace:AvaloniaMultiPageStarter.ViewModels.Pages"
+             x:DataType="vm:SettingsViewModel">
     <Grid>
-        <TextBlock Text="⚙️ Settings Page" FontSize="20" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Spacing="16">
+            <TextBlock Text="⚙️ Settings" FontSize="24"/>
+            
+            <TextBlock Text="Change Username:" />
+            <TextBox Text="{Binding InputName}" Width="200"/>
+
+            <Button Content="Save"
+                    Command="{Binding SaveNameCommand}" 
+                    Width="100"/>
+        </StackPanel>
     </Grid>
 </UserControl>
