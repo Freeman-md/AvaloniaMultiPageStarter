@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:vm="clr-namespace:AvaloniaMultiPageStarter.ViewModels.Layout"
         mc:Ignorable="d"
-        x:Class="AvaloniaMultiPageStarter.Views.Layout.ShellView"
+        x:Class="AvaloniaMultiPageStarter.Views.Layout.ShellWindow"
         x:DataType="vm:ShellViewModel"
         Width="900" Height="600"
         Title="Avalonia Multi-Page UI">

@@ -6,7 +6,9 @@ namespace AvaloniaMultiPageStarter.Services;
 public partial class AppConfigService: ObservableObject, IAppConfigService
 {
     [ObservableProperty]
-    private string username = "Freeman";
+    private string _username = "Freeman";
     [ObservableProperty]
-    private bool isDarkMode = false;
+    private bool _isDarkMode = false;
+    [ObservableProperty]
+    private bool _hasCompletedOnboarding = false;
 }

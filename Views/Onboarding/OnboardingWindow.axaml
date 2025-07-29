@@ -1,0 +1,32 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:vm="clr-namespace:AvaloniaMultiPageStarter.ViewModels.Onboarding"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AvaloniaMultiPageStarter.Views.Onboarding.OnboardingWindow"
+        x:DataType="vm:OnboardingViewModel"
+        Width="600" Height="400"
+        WindowStartupLocation="CenterScreen"
+        CanResize="False"
+        Background="Gray"
+        Title="Welcome to the Avalonia Multi Page Starter">
+    <Border Padding="20">
+        <StackPanel Spacing="16">
+            <ContentControl Content="{Binding CurrentStepView}" />
+            
+            <StackPanel Orientation="Horizontal" Spacing="8">
+                <Button
+                    Content="Back"
+                    Command="{Binding PreviousStepCommand}"
+                    IsVisible="{Binding ShowPreviousButton}"
+                    />
+                
+                <Button
+                    Content="{Binding PrimaryButtonText}"
+                    Command="{Binding PrimaryActionCommand}"
+                />
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

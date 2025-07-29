@@ -1,5 +1,6 @@
 using AvaloniaMultiPageStarter.Interfaces;
 using AvaloniaMultiPageStarter.ViewModels.Layout;
+using AvaloniaMultiPageStarter.ViewModels.Onboarding;
 using AvaloniaMultiPageStarter.ViewModels.Pages;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -16,6 +17,7 @@ public class Bootstrapper
 
         // Shell + Pages
         services.AddSingleton<ShellViewModel>();
+        services.AddSingleton<OnboardingViewModel>();
         services.AddTransient<HomeViewModel>();
         services.AddTransient<SettingsViewModel>();
         services.AddTransient<AboutViewModel>();
